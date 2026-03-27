@@ -12,7 +12,7 @@ public class Service : IService
         _dbContext = dbContext;
     }
 
-    public async Task<string> GetCategory(Request.GetCategoryRequest request)
+    public async Task<string> CreateCategory(Request.GetCategoryRequest request)
     {
         var existingCate = _dbContext.Categories.Where(x => x.Name == request.Name);
         var isExistedCate = await existingCate.AnyAsync();

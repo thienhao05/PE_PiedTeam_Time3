@@ -16,7 +16,7 @@ public class CategoryController : ControllerBase
     [HttpPost("")]
     public async Task<IActionResult> GetCategory(Request.GetCategoryRequest request)
     {
-        var category = await _categoryService.GetCategory(request);
+        var category = await _categoryService.CreateCategory(request);
         return Ok(category);
     }
     
