@@ -20,4 +20,9 @@ public class CategoryController : ControllerBase
         return Ok(category);
     }
     
+    [HttpGet("")]
+    public async Task<IActionResult> GetCategories(){
+        var categories = await _categoryService.GetAllCategories();
+        return Ok(categories);}
+    
 }

@@ -27,4 +27,17 @@ public class Service : IService
         await _dbContext.SaveChangesAsync();
         return "Add Category successful";
     }
+
+    public async Task<List<Response.GetAllCategoryResponse>> GetAllCategories()
+    {
+        var query = _dbContext.Categories.Where(x => true);
+        query = query.OrderBy(x => x.Name);
+        var selectedQuery = query.Select(x => new Response.GetAllCategoryResponse()
+        {
+            Name = x.Name,
+            Id = x.Id,
+        });
+        var result = await selectedQuery.ToListAsync();
+        return result;
+    }
 }
